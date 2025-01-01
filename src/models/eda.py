@@ -79,6 +79,12 @@ class TimeSeriesEDA:
     def grangers_test(self, data, columns):
         pass
 
+    def check_intmediant(self):
+        """
+        Check if given time series is intermediant.
+        """
+        pass
+
     def pair_plot(self, data, columns):
         """Plot pair plot for the given columns.
 

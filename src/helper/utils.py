@@ -2,6 +2,9 @@ import pandas as pd
 import numpy as np
 
 
+from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
+
+
 def reduce_mem_usage(df, verbose=True):
     """_summary_
 
