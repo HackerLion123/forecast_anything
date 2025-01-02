@@ -6,9 +6,9 @@ class ARIMA:
     def __init__(self):
         self.logger = None
 
-    def train(self, data, eda):
+    def train(self, train, test, eda):
         self.model = AutoARIMA(
-            data,
+            train,
             start_p=0,
             start_q=0,
             max_p=3,

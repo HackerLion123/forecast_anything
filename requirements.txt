@@ -7,3 +7,6 @@ statsforecast
 skforecast
 scipy
 hyperopt
+plotly
+shap
+optuna
