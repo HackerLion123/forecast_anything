@@ -10,12 +10,7 @@ warnings.filterwarnings("ignore")
 
 class ExponentialSmoothingModels:
     def __init__(self):
-        self.models = {
-            "simple_exp": SimpleExpSmoothing,
-            "holt": Holt,
-            "exp_smoothing": ExponentialSmoothing,
-        }
-        self.best_model = None
+        self.model = None
         self.best_params = None
         self.best_model_type = None
 

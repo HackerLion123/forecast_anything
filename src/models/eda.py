@@ -85,6 +85,12 @@ class TimeSeriesEDA:
         """
         pass
 
+    def check_new_product(self):
+        pass
+
+    def identify_seasonal_length(self):
+        pass
+
     def pair_plot(self, data, columns):
         """Plot pair plot for the given columns.
 

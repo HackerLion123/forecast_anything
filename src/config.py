@@ -12,6 +12,7 @@ LOG_DIR = os.path.join(PROJECT_DIR, "logs")
 NUM_TRAILS = 200
 TARGET = ""
 PARTITION_DIM = ""  # Dimension which defines the splits of dims
+INTERVAL = "day"
 
 EDA_CONIG = {}
 

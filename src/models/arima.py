@@ -1,4 +1,7 @@
 from statsforecast.models import AutoARIMA
+from statsforecast import StatsForecast
+
+import config
 
 
 class ARIMA:
@@ -20,5 +23,6 @@ class ARIMA:
             suppress_warnings=True,
         )
 
-    def forecast(self):
-        pass
+    def forecast(self, horizon):
+        forecast_output = self.model.forecast(h=horizon)
+        return forecast_output

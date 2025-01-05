@@ -1,6 +1,7 @@
 pandas
 numpy
 seaborn
+scikit-learn
 matplotlib
 statsmodels
 statsforecast
@@ -10,3 +11,4 @@ hyperopt
 plotly
 shap
 optuna
+tsfresh
