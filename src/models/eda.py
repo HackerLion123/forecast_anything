@@ -15,6 +15,12 @@ class TimeSeriesEDA:
         """Run the EDA process based on the provided configuration."""
         pass
 
+    def monthly_seasonality(self):
+        pass
+
+    def day_of_week_seasonality(self):
+        pass
+
     def plot_timeseries(self, data, column):
         """Plot the time series data.
 
