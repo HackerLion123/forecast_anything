@@ -1,28 +1,47 @@
-import os
+from pathlib import Path
 
+# Random seed for reproducibility of experiments
 SEED = 73
 
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(PROJECT_DIR, "data")
-OUPUT_DIR = os.path.join(PROJECT_DIR, "output")
-MODEL_DIR = os.path.join(PROJECT_DIR, "model")
-LOG_DIR = os.path.join(PROJECT_DIR, "logs")
-
-NUM_TRAILS = 200
-TARGET = ""
-PARTITION_DIM = ""  # Dimension which defines the splits of dims
-INTERVAL = "day"
-
-EDA_CONIG = {}
+# Project directories
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = PROJECT_DIR / "data"
+OUTPUT_DIR = PROJECT_DIR / "output"
+MODEL_DIR = PROJECT_DIR / "model"
+LOG_DIR = PROJECT_DIR / "logs"
 
 
-FEATURE_CONFIG = {}
-
-
-INTERMITTENT_CONFIG = {"models": [], "metric": [], "inference": []}
-
-
-MODEL_CONFIG = {"models": [], "metric": []}
-
-NEW_PRODUCT_CONFIG = {"models": []}
+# --- Unified Forecasting Configuration ---
+FORECASTING_CONFIG = {
+    "num_trails": 200,
+    "target": "",
+    "partition_dim": "",  # Dimension which defines the splits of dims
+    "interval": "day",
+    "eda": {
+        "correlation_threshold": 0.8,
+        "missing_value_threshold": 0.1,
+    },
+    "feature_engineering": {
+        "lags": [1, 7, 14],
+        "rolling_windows": [7, 14, 28],
+        "rolling_functions": ["mean", "std"],
+        "date_features": ["dayofweek", "month", "year", "weekofyear"],
+    },
+    "models": {
+        "general": {
+            "models": ["arima", "exponential_smoothing", "lightgbm"],
+            "metric": ["rmse", "mape"],
+        },
+        "intermittent": {
+            # For series with many zero values.
+            "models": ["croston", "adida"],
+            "metric": ["mae", "mase"],
+            "inference": ["point"],
+        },
+        "new_product": {
+            # Cold start for newly launched products.
+            "models": [],
+        },
+    },
+}

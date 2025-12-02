@@ -6,9 +6,7 @@ matplotlib
 statsmodels
 statsforecast
 skforecast
-scipy
-hyperopt
-plotly
+torch
 shap
 optuna
 tsfresh
