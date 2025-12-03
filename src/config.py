@@ -20,7 +20,7 @@ FORECASTING_CONFIG = {
     "interval": "day",
     "eda": {
         "correlation_threshold": 0.8,
-        "missing_value_threshold": 0.1,
+        "zero_threshold": 0.6, # Threshold to identify intermittent series
     },
     "feature_engineering": {
         "lags": [1, 7, 14],

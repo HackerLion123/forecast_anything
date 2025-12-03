@@ -2,11 +2,6 @@ import pandas as pd
 import numpy as np
 
 
-from hyperopt import hp, fmin, tpe, Trials, STATUS_OK
-
-import config
-
-
 def reduce_mem_usage(df, verbose=True):
     """_summary_
 
@@ -54,44 +49,3 @@ def reduce_mem_usage(df, verbose=True):
             )
         )
     return df
-
-
-def objective(params, metric_fn):
-    """_summary_
-
-    Args:
-        params (_type_): _description_
-        metric_fn (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    model_class = params["model_class"]
-    hyperparams = params["hyperparams"]
-    model = model_class(**hyperparams)
-    metric = metric_fn()
-    return {"loss": metric, "status": STATUS_OK}
-
-
-def optimize(model_class, hyperparams_space):
-    """_summary_
-
-    Args:
-        model_class (_type_): _description_
-        hyperparams_space (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    space = {"model_class": model_class, "hyperparams": hyperparams_space}
-
-    trials = Trials()
-    best = fmin(
-        fn=objective,
-        space=space,
-        algo=tpe.suggest,
-        max_evals=config.NUM_TRAILS,
-        trials=trials,
-    )
-
-    return best, trials
