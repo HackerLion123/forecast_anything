@@ -26,7 +26,7 @@ class BaselineForecaster:
         self.y_train = np.array(y_train)
         return self
     
-    def predict(self, horizon):
+    def forecast(self, horizon):
         """
         Generate forecasts
         Args:
